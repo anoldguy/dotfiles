@@ -18,6 +18,7 @@ Available options:
 -v, --verbose   Print script debug info
 -f, --force     Force installation
 -c, --cleanup   Uninstall/Cleanup dotfiles
+-i, --init      Set shell and install software
 EOF
   exit
 }
@@ -52,6 +53,7 @@ parse_params() {
   verbose=""
   cleanup=""
   target="$HOME"
+  arch=$(arch)
 
   while :; do
     case "${1-}" in
@@ -87,15 +89,60 @@ parse_params() {
 parse_params "$@"
 setup_colors
 
-for dir in ./*/; do
-  realdir=$(realpath "$dir")
-  package=$(basename "$dir")
-
+link_dotfiles(){
+  local cleanup="$1"
+  
   if [ "$cleanup" != "" ]; then
-    msg "Cleaning up ${CYAN}$package${NOCOLOR}"
-    stow $force $cleanup -t ~ $verbose $package
+    verb="Cleaning"
   else
-    msg "Setting up ${CYAN}$package${NOCOLOR}"
-    stow $force -t ~ $verbose $package
+    verb="Setting"
   fi
-done
+
+  # Relies on current directory
+  for dir in ./*/; do
+    realdir=$(realpath "$dir")
+    package=$(basename "$dir")
+    
+    msg "$verb up ${CYAN}$package${NOCOLOR}"
+    stow $force $cleanup -t ~ $verbose $package
+  done
+}
+
+change_shell(){
+  msg "Changing shell to 🐟"
+  shell="$(which fish)"
+
+  if test ! $(grep $shell /etc/shells); then
+    sudo bash -c "echo $shell >> /etc/shells"
+  fi
+
+  if [[ ! $SHELL = $shell ]]; then
+    chsh -s $shell
+  fi
+}
+
+is_arm(){
+  [ "$arch" == "arm64" ]
+}
+
+is_mac(){
+  os=$(uname -s)
+  [ "$os" == "Darwin" ]
+}
+
+install_software(){
+  if [ is_mac ]; then
+    msg "Installing brew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    export PATH=$PATH:$(brew_path)
+    [ -e Brewfile ] && brew bundle
+  fi
+}
+
+brew_path(){
+  is_arm && echo "/opt/homebrew/bin" || echo "/usr/local/bin"
+}
+
+install_software
+#link_dotfiles $cleanup
+#change_shell

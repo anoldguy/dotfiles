@@ -85,7 +85,7 @@ parse_params() {
 }
 
 check_dependencies(){
- which stow > /dev/null || (echo "GNU Stow required; install via brew or apt"; exit)
+ which stow > /dev/null || (echo "GNU Stow required; install via brew or apt" && exit)
  which starship > /dev/null || echo "Starship suggested; install via brew or apt"
  which fish > /dev/null || echo "fish suggested; install via brew or apt"
 }

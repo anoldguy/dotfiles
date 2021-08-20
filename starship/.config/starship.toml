@@ -124,3 +124,6 @@ symbol = ""
 [rust]
 format = 'rs:[$symbol($version )]($style) '
 symbol = ""
+
+[docker_context]
+disabled = true

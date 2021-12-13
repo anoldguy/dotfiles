@@ -1,78 +1,104 @@
 [user]
 	name = Nathan Anderson
 	email = andnat@gmail.com
-	signingkey = 0xAB2E8BA30A3CD935
+[apply]
+    # Detect whitespace errors when applying a patch
+    whitespace = fix
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+
 [core]
-	excludesfile = /Users/nathan/.gitignore
-	#pager = delta
+    # Use custom `.gitignore` and `.gitattributes`
+    excludesfile = ~/.gitignore
+    attributesfile = ~/.gitattributes
 
-#[delta]
-	#plus-color = "#012800"
-	#minus-color = "#340001"
-	#syntax-theme = Monokai Extended
-	#line-numbers = true
+    # Treat spaces before tabs and all kinds of trailing whitespace as an error
+    # [default] trailing-space: looks for spaces at the end of a line
+    # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-[interactive]
-	diffFilter = delta --color-only
-[format]
-  pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
-[alias]
-  c = commit -m
-  ca = commit --amend
-  cbr = checkout -b
-  ci = commit
-  co = checkout
-  cp = cherry-pick
-  pl = pull
-  ps = push
-  plre = pull --rebase
-  st = status -sb
-  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-  pr = remote prune origin
-  up = "!git remote update -p; git merge --ff-only @{u}"
-  top = "!git log --format='%an' | sort | uniq -c | sort -nr"
-  rbc = rebase --continue
-  rbi = rebase -i
-  lp = log -p
-  graphy = log --graph --pretty=format:'%h %d' --abbrev-commit --date=relative
-  vim = !vim .git/index
-  undo = reset --soft HEAD^
-[rerere]
-	enabled = true
-[push]
-	default = current
-	followTags = true
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-[branch]
-	autosetuprebase = always
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-[tag]
-	gpgsign = false
+    # Make `git rebase` safer on OS X
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+
+    # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+    # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+    precomposeunicode = false
+
 [credential]
-	helper = osxkeychain
-[pull]
-	rebase = true
-[merge]
-    # Include summaries of merged commits in newly created merge commit messages
-    log = true
-    tool = vimdiff
-    renameLimit = 0
+    helper = osxkeychain
+
 [diff]
     renames = copies
     renameLimit = 0
     indentHeuristic = true
+
 [fetch]
-	prune = true
+    prune = true
+
+[help]
+    # Automatically correct and execute mistyped commands
+    autocorrect = 1
+
 [include]
+    # Include extra config local to this machine
 	path = ~/.gitconfig.shipyard
+
+[log]
+    mailmap = true
+
+[mailmap]
+    file = ~/.gitmailmap
+
+[merge]
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
+    renameLimit = 0
+
+[pull]
+    rebase = true
+
+[push]
+    # Make `git push` push relevant annotated tags when pushing branches out
+    followTags = true
+
+[rebase]
+    autosquash = true
+
+[tag]
+    forceSignAnnotated = true
+
+
+# Git LFS for GitHub Desktop
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+
+[alias]
+    c = commit -m
+    ca = commit --amend
+    cbr = checkout -b
+    ci = commit
+    co = checkout
+    cp = cherry-pick
+    pl = pull
+    ps = push
+    plre = pull --rebase
+    st = status -sb
+    graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    pr = remote prune origin
+    up = "!git remote update -p; git merge --ff-only @{u}"
+    top = "!git log --format='%an' | sort | uniq -c | sort -nr"
+    rbc = rebase --continue
+    rbi = rebase -i
+    lp = log -p
+    graphy = log --graph --pretty=format:'%h %d' --abbrev-commit --date=relative
+    vim = !vim .git/index
+    undo = reset --soft HEAD^
+[rerere]
+	enabled = true

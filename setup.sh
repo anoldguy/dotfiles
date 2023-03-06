@@ -166,21 +166,21 @@ install_prerequisites(){
     chsh -s $shell
   fi
 
-  if [ -d ~/.ssh ]; then
-    set +e
-    set -x
-    ln -s $CLOUD_DIR/.ssh/config ~/.ssh/config
-    ssh-add --apple-use-keychain ~/.ssh/basecamp_id_rsa_20160406
-  fi
+  #if [ -d ~/.ssh ]; then
+    #set +e
+    #set -x
+    #ln -s $CLOUD_DIR/.ssh/config ~/.ssh/config
+    #ssh-add --apple-use-keychain ~/.ssh/basecamp_id_rsa_20160406
+  #fi
 }
 
 check_dependencies
 parse_params "$@"
 setup_colors
 
-if [ "$cleanup" != "-D" ]; then
-  install_prerequisites
-fi
+#if [ "$cleanup" != "-D" ]; then
+  #install_prerequisites
+#fi
 
 for dir in ./*/; do
   package=$(basename "$dir")

@@ -25,7 +25,6 @@ brew "readline"
 brew "37"
 brew "work"
 brew "mysql", restart_service: :changed
-brew "postgresql", restart_service: :changed
 brew "redis", restart_service: :changed
 
 # Language stuff
@@ -59,26 +58,18 @@ brew "mkvtoolnix"
 brew "ffmpeg"
 
 # MacOS Apps
-cask "1password"
 cask "1password-cli"
-#cask "spotify"
 cask "visual-studio-code"
-cask "encryptme"
-cask "docker"
-cask "viscosity"
 cask "sketch"
 cask "makemkv"
 cask "firefox"
 cask "gifox"
 cask "rectangle"
-#cask "keybase"
 cask "github"
-cask "google-cloud-sdk"
 cask "signal"
 cask "yacreader"
 cask "xld"
 cask "rocket"
-cask "discord"
 
 # Fonts
 tap "homebrew/cask-fonts"

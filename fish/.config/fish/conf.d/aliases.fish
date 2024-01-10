@@ -11,4 +11,6 @@ if status --is-interactive
     abbr -a kget kubectl get events --sort-by='.lastTimestamp'
     abbr -a kc kubectl config current-context
     abbr -a kde "kubectl get pods | grep Evicted | awk '{print $1}' | xargs -n 1 kubectl delete pod"
+    abbr -a dsa "docker ps -aq | xargs docker stop | xargs docker rm"
+    alias ls "lsd"
 end

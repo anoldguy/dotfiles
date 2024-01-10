@@ -27,3 +27,4 @@ I've included a couple of my fav terminal themes. Flat has been my default for y
 ![Flat Terminal Preview](flat-terminal-preview.png)
 ![Elementary Terminal Preview](elementary-terminal-preview.png)
 ![Dimmed Monokai Terminal Preview](dimmed-monokai-terminal-preview.png)
+![Flexoki Terminal Preview](flexoki-terminal-preview.png)

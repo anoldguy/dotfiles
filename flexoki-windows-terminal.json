@@ -1,0 +1,23 @@
+{
+  "name": "Flexoki",
+  "black": "#100F0F",
+  "red": "#AF3029",
+  "green": "#66800B",
+  "yellow": "#AD8301",
+  "blue": "#5E409D",
+  "purple": "#A02F6F",
+  "cyan": "#24837B",
+  "white": "#878580",
+  "brightBlack": "#282726",
+  "brightRed": "#D14D41",
+  "brightGreen": "#879A39",
+  "brightYellow": "#D0A215",
+  "brightBlue": "#8B7EC8",
+  "brightPurple": "#CE5D97",
+  "brightCyan": "#3AA99F",
+  "brightWhite": "#CECDC3",
+  "background": "#100F0F",
+  "foreground": "#FFFFFF",
+  "selectionBackground": "#575653",
+  "cursorColor": "#878580"
+}

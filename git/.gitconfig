@@ -29,7 +29,9 @@
     precomposeunicode = false
 
 [credential]
-    helper = osxkeychain
+    credentialStore = secretservice
+	helper = 
+	helper = /usr/bin/git-credential-manager
 
 [diff]
     renames = copies
@@ -102,3 +104,5 @@
     undo = reset --soft HEAD^
 [rerere]
 	enabled = true
+[init]
+	defaultBranch = main

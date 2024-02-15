@@ -1,6 +1,6 @@
 if status --is-interactive
     which prettyping > /dev/null && alias ping="prettyping --nolegend"
-    which htop > /dev/null && alias top="htop"
+    #which htop > /dev/null && alias top="htop"
     abbr -a bi bundle install
     abbr -a be bundle exec
     abbr -a k kubectl

@@ -1,6 +1,6 @@
 if status --is-interactive
     which prettyping > /dev/null && alias ping="prettyping --nolegend"
-    #which htop > /dev/null && alias top="htop"
+    which htop > /dev/null && alias top="htop"
     abbr -a bi bundle install
     abbr -a be bundle exec
     abbr -a k kubectl
@@ -12,5 +12,5 @@ if status --is-interactive
     abbr -a kc kubectl config current-context
     abbr -a kde "kubectl get pods | grep Evicted | awk '{print $1}' | xargs -n 1 kubectl delete pod"
     abbr -a dsa "docker ps -aq | xargs docker stop | xargs docker rm"
-    alias ls "lsd"
+    which lsd > /dev/null && alias ls lsd
 end

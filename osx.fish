@@ -4,7 +4,7 @@ set dotfilesInstall true
 if count $argv > /dev/null
 	set name $argv[1]
 else
-	set name "seitch-tabr"
+	set name "workstation-01"
 end
 #if dotfiles-is-installing; and not is_linux
   echo " Setting up macOS defaults"

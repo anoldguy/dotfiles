@@ -29,9 +29,7 @@
     precomposeunicode = false
 
 [credential]
-    credentialStore = secretservice
-	helper = 
-	helper = /usr/bin/git-credential-manager
+
 
 [diff]
     renames = copies
@@ -66,6 +64,7 @@
 [push]
     # Make `git push` push relevant annotated tags when pushing branches out
     followTags = true
+    autoSetupRemote = true
 
 [rebase]
     autosquash = true
@@ -106,3 +105,12 @@
 	enabled = true
 [init]
 	defaultBranch = main
+
+[includeIf "gitdir:~/Work/basecamp"]
+	path = ~/Work/basecamp/.gitconfig
+
+[includeIf "gitdir:/Users"]
+	path = ~/.gitconfig.macos
+
+[includeIf "gitdir:/home"]
+	path = ~/.gitconfig.linux

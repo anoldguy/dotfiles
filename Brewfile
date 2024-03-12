@@ -1,9 +1,3 @@
-def mojave?
-  `sw_vers`.match /\s10\.14/
-end
-
-tap "basecamp/private", "git@github.com:basecamp/homebrew-private.git"
-
 cask_args appdir: "/Applications"
 
 # FISH!
@@ -21,12 +15,6 @@ brew "wget"
 brew "httpie"
 brew "readline"
 
-# Work stuff
-brew "37"
-brew "work"
-brew "mysql", restart_service: :changed
-brew "redis", restart_service: :changed
-
 # Language stuff
 brew "rbenv"
 brew "rbenv-default-gems"
@@ -40,6 +28,7 @@ brew "yarn"
 
 # Shell utilities
 brew "prettyping"
+brew "btop"
 brew "bat"
 brew "diff-so-fancy"
 brew "hub"
@@ -58,6 +47,7 @@ brew "mkvtoolnix"
 brew "ffmpeg"
 
 # MacOS Apps
+cask "1password"
 cask "1password-cli"
 cask "visual-studio-code"
 cask "sketch"
@@ -70,8 +60,11 @@ cask "signal"
 cask "yacreader"
 cask "xld"
 cask "rocket"
+cask "discord"
+cask "steam"
 
 # Fonts
 tap "homebrew/cask-fonts"
 
 cask "font-mononoki-nerd-font"
+cask "font-victor-mono-nerd-font"

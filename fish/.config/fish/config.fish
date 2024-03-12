@@ -41,9 +41,6 @@ if test -e $HOME/.private.config.fish
 end
 
 # Initialize starship.
-set -q STARSHIP_CONFIG; or set -gx STARSHIP_CONFIG $__fish_config_dir/themes/mmc.toml
 starship init fish | source
-enable_transience
 
-# Handle ssh-agent
-#fish_ssh_agent
+fish_ssh_agent
